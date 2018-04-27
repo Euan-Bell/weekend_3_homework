@@ -10,7 +10,7 @@ class Ticket
 
 def initialize(options)
   @id = options['id'].to_i if options['id']
-  @user_id = options['user_id'].to_i
+  @customer_id = options['customer_id'].to_i
   @film_id = options['film_id'].to_i
 end
 
@@ -38,7 +38,7 @@ def self.map_items(ticket_data)
 
  def update()
     sql = "UPDATE ticket SET (customer_id, film_id) = ($1, $2) WHERE id = $3"
-    values = [@user_id, @film_id, @id]
+    values = [@customer_id, @film_id, @id]
     SqlRunner.run(sql, values)
   end
 
